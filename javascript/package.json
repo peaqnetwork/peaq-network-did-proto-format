@@ -1,6 +1,6 @@
 {
   "name": "peaq-did-proto-js",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "",
   "main": "did_document_format_pb.js",
   "scripts": {

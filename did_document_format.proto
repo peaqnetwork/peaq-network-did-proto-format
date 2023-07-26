@@ -1,18 +1,7 @@
 syntax = "proto3";
 
 package document;
-option go_package = "github.com/peaqnetwork/peaq-network-ev-charging-message-format/golang/document;document";
-
-enum ServiceType {
-  p2p = 0;
-  payment = 1;
-  metadata = 2;
-}
-
-enum Status {
-  AVAILABLE = 0;
-  UNAVAILABLE = 1;
-}
+option go_package = "github.com/peaqnetwork/peaq-network-did-proto-format/golang/document;document";
 
 enum VerificationType {
   Ed25519VerificationKey2020 = 0;
@@ -32,23 +21,11 @@ message Signature {
   string hash = 3;
 }
 
-message Metadata {
-  string name = 1;
-  string power = 2;
-  Status status = 3;
-  string chargePointClientId = 4;
-  int32 connectorsCount = 5;
-  string plugType = 6;
-  float pricePerKWHR = 7;
-}
-
 message Service {
   string id = 1;
-  ServiceType type = 2;
-  oneof serviceEndpoint {
-    string stringData = 3;
-    Metadata metadata = 4;
-  };
+  string type = 2;
+  string serviceEndpoint = 3;
+  string data = 4;
 }
 
 message Document {
