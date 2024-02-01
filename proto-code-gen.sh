@@ -8,7 +8,7 @@ protoc -I=./  --rust_out rust/src $(find ./ -iname "did_document_format.proto")
 mv rust/src/mod.rs rust/src/lib.rs
 
 # # Dart code generator
-# protoc -I=./ --dart_out=./dart/lib $(find ./ -iname "*.proto")
+protoc -I=./ --dart_out=./dart/lib $(find ./ -iname "*.proto")
 # protoc -I=./ --python_out python $(find ./ -iname "*.proto")
 
 # Javascript code generator
