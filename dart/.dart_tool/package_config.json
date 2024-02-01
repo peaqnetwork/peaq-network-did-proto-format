@@ -1,0 +1,38 @@
+{
+  "configVersion": 2,
+  "packages": [
+    {
+      "name": "collection",
+      "rootUri": "file:///home/iredia/.pub-cache/hosted/pub.dev/collection-1.18.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.18"
+    },
+    {
+      "name": "fixnum",
+      "rootUri": "file:///home/iredia/.pub-cache/hosted/pub.dev/fixnum-1.1.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.19"
+    },
+    {
+      "name": "meta",
+      "rootUri": "file:///home/iredia/.pub-cache/hosted/pub.dev/meta-1.11.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "protobuf",
+      "rootUri": "file:///home/iredia/.pub-cache/hosted/pub.dev/protobuf-3.1.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.19"
+    },
+    {
+      "name": "peaq_did_proto",
+      "rootUri": "../",
+      "packageUri": "lib/",
+      "languageVersion": "3.2"
+    }
+  ],
+  "generated": "2024-02-01T19:47:40.344086Z",
+  "generator": "pub",
+  "generatorVersion": "3.2.4"
+}
