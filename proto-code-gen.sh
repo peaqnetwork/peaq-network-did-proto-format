@@ -5,7 +5,7 @@
 protoc -I=./  --rust_out rust/src $(find ./ -iname "*.proto")
 protoc -I=./  --rust_out rust/src $(find ./ -iname "did_document_format.proto")
 #rename the mod.rs to lib.rs
-# mv rust/src/mod.rs rust/src/lib.rs
+mv rust/src/mod.rs rust/src/lib.rs
 
 # # Dart code generator
 # protoc -I=./ --dart_out=./dart/lib $(find ./ -iname "*.proto")
