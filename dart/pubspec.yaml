@@ -2,11 +2,11 @@ name: "peaq_did_proto"
 version: "0.1.0"
 description: "Protobufs format of peaq did document"
 
-publish_to: 'none'
+publish_to: "none"
 
 environment:
-  sdk: '>=3.2.4 <4.0.0'
+  sdk: ">=3.2.4 <4.0.0"
 
-dependencies: 
+dependencies:
   fixnum: ^1.1.0
   protobuf: ^3.1.0
