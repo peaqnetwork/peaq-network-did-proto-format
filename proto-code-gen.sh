@@ -34,3 +34,6 @@ protoc --js_out=import_style=commonjs,binary:javascript did_document_format.prot
 
 # Swift code generator
 protoc -I=./ --swift_out=./swift $(find ./ -iname "*.proto")
+
+# Kotlin and Java code generator
+protoc -I=./ --java_out=./java/lib/src/main/java --kotlin_out=./java/lib/src/main/kotlin  $(find ./ -iname "*.proto")

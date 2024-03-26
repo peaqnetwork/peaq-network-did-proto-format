@@ -2,6 +2,9 @@ syntax = "proto3";
 
 package document;
 option go_package = "github.com/peaqnetwork/peaq-network-did-proto-format/golang/document;document";
+option java_multiple_files = true;
+option java_outer_classname = "PeaqDidProto";
+option java_package = "io.peaq.did";
 
 enum VerificationType {
   Ed25519VerificationKey2020 = 0;
