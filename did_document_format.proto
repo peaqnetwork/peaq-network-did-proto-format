@@ -15,7 +15,7 @@ message VerificationMethod {
   string id = 1;
   VerificationType type = 2;
   string controller = 3;
-  string publicKeyMultibase = 4;
+  string public_key_multibase = 4;
 }
 
 message Signature {
@@ -27,14 +27,14 @@ message Signature {
 message Service {
   string id = 1;
   string type = 2;
-  string serviceEndpoint = 3;
+  string service_endpoint = 3;
   string data = 4;
 }
 
 message Document {
   string id = 1;
   string controller = 2;
-  repeated VerificationMethod verificationMethods = 3;
+  repeated VerificationMethod verification_methods = 3;
   Signature signature = 4;
   repeated Service services = 5;
   repeated string authentications = 6;

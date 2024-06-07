@@ -13,7 +13,13 @@
 
 var jspb = require('google-protobuf');
 var goog = jspb;
-var global = (function() { return this || window || global || self || Function('return this')(); }).call(null);
+var global =
+    (typeof globalThis !== 'undefined' && globalThis) ||
+    (typeof window !== 'undefined' && window) ||
+    (typeof global !== 'undefined' && global) ||
+    (typeof self !== 'undefined' && self) ||
+    (function () { return this; }).call(null) ||
+    Function('return this')();
 
 goog.exportSymbol('proto.document.Document', null, global);
 goog.exportSymbol('proto.document.Service', null, global);
@@ -139,7 +145,7 @@ proto.document.VerificationMethod.toObject = function(includeInstance, msg) {
     id: jspb.Message.getFieldWithDefault(msg, 1, ""),
     type: jspb.Message.getFieldWithDefault(msg, 2, 0),
     controller: jspb.Message.getFieldWithDefault(msg, 3, ""),
-    publickeymultibase: jspb.Message.getFieldWithDefault(msg, 4, "")
+    publicKeyMultibase: jspb.Message.getFieldWithDefault(msg, 4, "")
   };
 
   if (includeInstance) {
@@ -190,7 +196,7 @@ proto.document.VerificationMethod.deserializeBinaryFromReader = function(msg, re
       break;
     case 4:
       var value = /** @type {string} */ (reader.readString());
-      msg.setPublickeymultibase(value);
+      msg.setPublicKeyMultibase(value);
       break;
     default:
       reader.skipField();
@@ -242,7 +248,7 @@ proto.document.VerificationMethod.serializeBinaryToWriter = function(message, wr
       f
     );
   }
-  f = message.getPublickeymultibase();
+  f = message.getPublicKeyMultibase();
   if (f.length > 0) {
     writer.writeString(
       4,
@@ -307,10 +313,10 @@ proto.document.VerificationMethod.prototype.setController = function(value) {
 
 
 /**
- * optional string publicKeyMultibase = 4;
+ * optional string public_key_multibase = 4;
  * @return {string}
  */
-proto.document.VerificationMethod.prototype.getPublickeymultibase = function() {
+proto.document.VerificationMethod.prototype.getPublicKeyMultibase = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 4, ""));
 };
 
@@ -319,7 +325,7 @@ proto.document.VerificationMethod.prototype.getPublickeymultibase = function() {
  * @param {string} value
  * @return {!proto.document.VerificationMethod} returns this
  */
-proto.document.VerificationMethod.prototype.setPublickeymultibase = function(value) {
+proto.document.VerificationMethod.prototype.setPublicKeyMultibase = function(value) {
   return jspb.Message.setProto3StringField(this, 4, value);
 };
 
@@ -548,7 +554,7 @@ proto.document.Service.toObject = function(includeInstance, msg) {
   var f, obj = {
     id: jspb.Message.getFieldWithDefault(msg, 1, ""),
     type: jspb.Message.getFieldWithDefault(msg, 2, ""),
-    serviceendpoint: jspb.Message.getFieldWithDefault(msg, 3, ""),
+    serviceEndpoint: jspb.Message.getFieldWithDefault(msg, 3, ""),
     data: jspb.Message.getFieldWithDefault(msg, 4, "")
   };
 
@@ -596,7 +602,7 @@ proto.document.Service.deserializeBinaryFromReader = function(msg, reader) {
       break;
     case 3:
       var value = /** @type {string} */ (reader.readString());
-      msg.setServiceendpoint(value);
+      msg.setServiceEndpoint(value);
       break;
     case 4:
       var value = /** @type {string} */ (reader.readString());
@@ -645,7 +651,7 @@ proto.document.Service.serializeBinaryToWriter = function(message, writer) {
       f
     );
   }
-  f = message.getServiceendpoint();
+  f = message.getServiceEndpoint();
   if (f.length > 0) {
     writer.writeString(
       3,
@@ -699,10 +705,10 @@ proto.document.Service.prototype.setType = function(value) {
 
 
 /**
- * optional string serviceEndpoint = 3;
+ * optional string service_endpoint = 3;
  * @return {string}
  */
-proto.document.Service.prototype.getServiceendpoint = function() {
+proto.document.Service.prototype.getServiceEndpoint = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
 };
 
@@ -711,7 +717,7 @@ proto.document.Service.prototype.getServiceendpoint = function() {
  * @param {string} value
  * @return {!proto.document.Service} returns this
  */
-proto.document.Service.prototype.setServiceendpoint = function(value) {
+proto.document.Service.prototype.setServiceEndpoint = function(value) {
   return jspb.Message.setProto3StringField(this, 3, value);
 };
 
@@ -775,7 +781,7 @@ proto.document.Document.toObject = function(includeInstance, msg) {
   var f, obj = {
     id: jspb.Message.getFieldWithDefault(msg, 1, ""),
     controller: jspb.Message.getFieldWithDefault(msg, 2, ""),
-    verificationmethodsList: jspb.Message.toObjectList(msg.getVerificationmethodsList(),
+    verificationMethodsList: jspb.Message.toObjectList(msg.getVerificationMethodsList(),
     proto.document.VerificationMethod.toObject, includeInstance),
     signature: (f = msg.getSignature()) && proto.document.Signature.toObject(includeInstance, f),
     servicesList: jspb.Message.toObjectList(msg.getServicesList(),
@@ -828,7 +834,7 @@ proto.document.Document.deserializeBinaryFromReader = function(msg, reader) {
     case 3:
       var value = new proto.document.VerificationMethod;
       reader.readMessage(value,proto.document.VerificationMethod.deserializeBinaryFromReader);
-      msg.addVerificationmethods(value);
+      msg.addVerificationMethods(value);
       break;
     case 4:
       var value = new proto.document.Signature;
@@ -887,7 +893,7 @@ proto.document.Document.serializeBinaryToWriter = function(message, writer) {
       f
     );
   }
-  f = message.getVerificationmethodsList();
+  f = message.getVerificationMethodsList();
   if (f.length > 0) {
     writer.writeRepeatedMessage(
       3,
@@ -958,10 +964,10 @@ proto.document.Document.prototype.setController = function(value) {
 
 
 /**
- * repeated VerificationMethod verificationMethods = 3;
+ * repeated VerificationMethod verification_methods = 3;
  * @return {!Array<!proto.document.VerificationMethod>}
  */
-proto.document.Document.prototype.getVerificationmethodsList = function() {
+proto.document.Document.prototype.getVerificationMethodsList = function() {
   return /** @type{!Array<!proto.document.VerificationMethod>} */ (
     jspb.Message.getRepeatedWrapperField(this, proto.document.VerificationMethod, 3));
 };
@@ -971,7 +977,7 @@ proto.document.Document.prototype.getVerificationmethodsList = function() {
  * @param {!Array<!proto.document.VerificationMethod>} value
  * @return {!proto.document.Document} returns this
 */
-proto.document.Document.prototype.setVerificationmethodsList = function(value) {
+proto.document.Document.prototype.setVerificationMethodsList = function(value) {
   return jspb.Message.setRepeatedWrapperField(this, 3, value);
 };
 
@@ -981,7 +987,7 @@ proto.document.Document.prototype.setVerificationmethodsList = function(value) {
  * @param {number=} opt_index
  * @return {!proto.document.VerificationMethod}
  */
-proto.document.Document.prototype.addVerificationmethods = function(opt_value, opt_index) {
+proto.document.Document.prototype.addVerificationMethods = function(opt_value, opt_index) {
   return jspb.Message.addToRepeatedWrapperField(this, 3, opt_value, proto.document.VerificationMethod, opt_index);
 };
 
@@ -990,8 +996,8 @@ proto.document.Document.prototype.addVerificationmethods = function(opt_value, o
  * Clears the list making it empty but non-null.
  * @return {!proto.document.Document} returns this
  */
-proto.document.Document.prototype.clearVerificationmethodsList = function() {
-  return this.setVerificationmethodsList([]);
+proto.document.Document.prototype.clearVerificationMethodsList = function() {
+  return this.setVerificationMethodsList([]);
 };
 
 
