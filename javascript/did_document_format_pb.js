@@ -13,7 +13,13 @@
 
 var jspb = require('google-protobuf');
 var goog = jspb;
-var global = (function() { return this || window || global || self || Function('return this')(); }).call(null);
+var global =
+    (typeof globalThis !== 'undefined' && globalThis) ||
+    (typeof window !== 'undefined' && window) ||
+    (typeof global !== 'undefined' && global) ||
+    (typeof self !== 'undefined' && self) ||
+    (function () { return this; }).call(null) ||
+    Function('return this')();
 
 goog.exportSymbol('proto.document.Document', null, global);
 goog.exportSymbol('proto.document.Service', null, global);
@@ -136,10 +142,10 @@ proto.document.VerificationMethod.prototype.toObject = function(opt_includeInsta
  */
 proto.document.VerificationMethod.toObject = function(includeInstance, msg) {
   var f, obj = {
-    id: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    type: jspb.Message.getFieldWithDefault(msg, 2, 0),
-    controller: jspb.Message.getFieldWithDefault(msg, 3, ""),
-    publickeymultibase: jspb.Message.getFieldWithDefault(msg, 4, "")
+    id: jspb.Message.getFieldWithDefault(msg, 1, undefined),
+    type: jspb.Message.getFieldWithDefault(msg, 2, undefined),
+    controller: jspb.Message.getFieldWithDefault(msg, 3, undefined),
+    publicKeyMultibase: jspb.Message.getFieldWithDefault(msg, 4, undefined)
   };
 
   if (includeInstance) {
@@ -190,7 +196,7 @@ proto.document.VerificationMethod.deserializeBinaryFromReader = function(msg, re
       break;
     case 4:
       var value = /** @type {string} */ (reader.readString());
-      msg.setPublickeymultibase(value);
+      msg.setPublicKeyMultibase(value);
       break;
     default:
       reader.skipField();
@@ -242,7 +248,7 @@ proto.document.VerificationMethod.serializeBinaryToWriter = function(message, wr
       f
     );
   }
-  f = message.getPublickeymultibase();
+  f = message.getPublicKeyMultibase();
   if (f.length > 0) {
     writer.writeString(
       4,
@@ -257,7 +263,7 @@ proto.document.VerificationMethod.serializeBinaryToWriter = function(message, wr
  * @return {string}
  */
 proto.document.VerificationMethod.prototype.getId = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, undefined));
 };
 
 
@@ -275,7 +281,7 @@ proto.document.VerificationMethod.prototype.setId = function(value) {
  * @return {!proto.document.VerificationType}
  */
 proto.document.VerificationMethod.prototype.getType = function() {
-  return /** @type {!proto.document.VerificationType} */ (jspb.Message.getFieldWithDefault(this, 2, 0));
+  return /** @type {!proto.document.VerificationType} */ (jspb.Message.getFieldWithDefault(this, 2, undefined));
 };
 
 
@@ -293,7 +299,7 @@ proto.document.VerificationMethod.prototype.setType = function(value) {
  * @return {string}
  */
 proto.document.VerificationMethod.prototype.getController = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, undefined));
 };
 
 
@@ -307,11 +313,11 @@ proto.document.VerificationMethod.prototype.setController = function(value) {
 
 
 /**
- * optional string publicKeyMultibase = 4;
+ * optional string public_key_multibase = 4;
  * @return {string}
  */
-proto.document.VerificationMethod.prototype.getPublickeymultibase = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 4, ""));
+proto.document.VerificationMethod.prototype.getPublicKeyMultibase = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 4, undefined));
 };
 
 
@@ -319,7 +325,7 @@ proto.document.VerificationMethod.prototype.getPublickeymultibase = function() {
  * @param {string} value
  * @return {!proto.document.VerificationMethod} returns this
  */
-proto.document.VerificationMethod.prototype.setPublickeymultibase = function(value) {
+proto.document.VerificationMethod.prototype.setPublicKeyMultibase = function(value) {
   return jspb.Message.setProto3StringField(this, 4, value);
 };
 
@@ -356,9 +362,9 @@ proto.document.Signature.prototype.toObject = function(opt_includeInstance) {
  */
 proto.document.Signature.toObject = function(includeInstance, msg) {
   var f, obj = {
-    type: jspb.Message.getFieldWithDefault(msg, 1, 0),
-    issuer: jspb.Message.getFieldWithDefault(msg, 2, ""),
-    hash: jspb.Message.getFieldWithDefault(msg, 3, "")
+    type: jspb.Message.getFieldWithDefault(msg, 1, undefined),
+    issuer: jspb.Message.getFieldWithDefault(msg, 2, undefined),
+    hash: jspb.Message.getFieldWithDefault(msg, 3, undefined)
   };
 
   if (includeInstance) {
@@ -465,7 +471,7 @@ proto.document.Signature.serializeBinaryToWriter = function(message, writer) {
  * @return {!proto.document.VerificationType}
  */
 proto.document.Signature.prototype.getType = function() {
-  return /** @type {!proto.document.VerificationType} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
+  return /** @type {!proto.document.VerificationType} */ (jspb.Message.getFieldWithDefault(this, 1, undefined));
 };
 
 
@@ -483,7 +489,7 @@ proto.document.Signature.prototype.setType = function(value) {
  * @return {string}
  */
 proto.document.Signature.prototype.getIssuer = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, undefined));
 };
 
 
@@ -501,7 +507,7 @@ proto.document.Signature.prototype.setIssuer = function(value) {
  * @return {string}
  */
 proto.document.Signature.prototype.getHash = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, undefined));
 };
 
 
@@ -546,10 +552,10 @@ proto.document.Service.prototype.toObject = function(opt_includeInstance) {
  */
 proto.document.Service.toObject = function(includeInstance, msg) {
   var f, obj = {
-    id: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    type: jspb.Message.getFieldWithDefault(msg, 2, ""),
-    serviceendpoint: jspb.Message.getFieldWithDefault(msg, 3, ""),
-    data: jspb.Message.getFieldWithDefault(msg, 4, "")
+    id: jspb.Message.getFieldWithDefault(msg, 1, undefined),
+    type: jspb.Message.getFieldWithDefault(msg, 2, undefined),
+    serviceEndpoint: jspb.Message.getFieldWithDefault(msg, 3, undefined),
+    data: jspb.Message.getFieldWithDefault(msg, 4, undefined)
   };
 
   if (includeInstance) {
@@ -596,7 +602,7 @@ proto.document.Service.deserializeBinaryFromReader = function(msg, reader) {
       break;
     case 3:
       var value = /** @type {string} */ (reader.readString());
-      msg.setServiceendpoint(value);
+      msg.setServiceEndpoint(value);
       break;
     case 4:
       var value = /** @type {string} */ (reader.readString());
@@ -645,15 +651,15 @@ proto.document.Service.serializeBinaryToWriter = function(message, writer) {
       f
     );
   }
-  f = message.getServiceendpoint();
-  if (f.length > 0) {
+  f = /** @type {string} */ (jspb.Message.getField(message, 3));
+  if (f != null) {
     writer.writeString(
       3,
       f
     );
   }
-  f = message.getData();
-  if (f.length > 0) {
+  f = /** @type {string} */ (jspb.Message.getField(message, 4));
+  if (f != null) {
     writer.writeString(
       4,
       f
@@ -667,7 +673,7 @@ proto.document.Service.serializeBinaryToWriter = function(message, writer) {
  * @return {string}
  */
 proto.document.Service.prototype.getId = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, undefined));
 };
 
 
@@ -685,7 +691,7 @@ proto.document.Service.prototype.setId = function(value) {
  * @return {string}
  */
 proto.document.Service.prototype.getType = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, undefined));
 };
 
 
@@ -699,11 +705,11 @@ proto.document.Service.prototype.setType = function(value) {
 
 
 /**
- * optional string serviceEndpoint = 3;
+ * optional string service_endpoint = 3;
  * @return {string}
  */
-proto.document.Service.prototype.getServiceendpoint = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
+proto.document.Service.prototype.getServiceEndpoint = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, undefined));
 };
 
 
@@ -711,8 +717,26 @@ proto.document.Service.prototype.getServiceendpoint = function() {
  * @param {string} value
  * @return {!proto.document.Service} returns this
  */
-proto.document.Service.prototype.setServiceendpoint = function(value) {
-  return jspb.Message.setProto3StringField(this, 3, value);
+proto.document.Service.prototype.setServiceEndpoint = function(value) {
+  return jspb.Message.setField(this, 3, value);
+};
+
+
+/**
+ * Clears the field making it undefined.
+ * @return {!proto.document.Service} returns this
+ */
+proto.document.Service.prototype.clearServiceEndpoint = function() {
+  return jspb.Message.setField(this, 3, undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.document.Service.prototype.hasServiceEndpoint = function() {
+  return jspb.Message.getField(this, 3) != null;
 };
 
 
@@ -721,7 +745,7 @@ proto.document.Service.prototype.setServiceendpoint = function(value) {
  * @return {string}
  */
 proto.document.Service.prototype.getData = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 4, ""));
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 4, undefined));
 };
 
 
@@ -730,7 +754,25 @@ proto.document.Service.prototype.getData = function() {
  * @return {!proto.document.Service} returns this
  */
 proto.document.Service.prototype.setData = function(value) {
-  return jspb.Message.setProto3StringField(this, 4, value);
+  return jspb.Message.setField(this, 4, value);
+};
+
+
+/**
+ * Clears the field making it undefined.
+ * @return {!proto.document.Service} returns this
+ */
+proto.document.Service.prototype.clearData = function() {
+  return jspb.Message.setField(this, 4, undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.document.Service.prototype.hasData = function() {
+  return jspb.Message.getField(this, 4) != null;
 };
 
 
@@ -773,14 +815,14 @@ proto.document.Document.prototype.toObject = function(opt_includeInstance) {
  */
 proto.document.Document.toObject = function(includeInstance, msg) {
   var f, obj = {
-    id: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    controller: jspb.Message.getFieldWithDefault(msg, 2, ""),
-    verificationmethodsList: jspb.Message.toObjectList(msg.getVerificationmethodsList(),
+    id: jspb.Message.getFieldWithDefault(msg, 1, undefined),
+    controller: jspb.Message.getFieldWithDefault(msg, 2, undefined),
+    verificationMethods: jspb.Message.toObjectList(msg.getVerificationMethods(),
     proto.document.VerificationMethod.toObject, includeInstance),
     signature: (f = msg.getSignature()) && proto.document.Signature.toObject(includeInstance, f),
-    servicesList: jspb.Message.toObjectList(msg.getServicesList(),
+    services: jspb.Message.toObjectList(msg.getServices(),
     proto.document.Service.toObject, includeInstance),
-    authenticationsList: (f = jspb.Message.getRepeatedField(msg, 6)) == null ? undefined : f
+    authentications: (f = jspb.Message.getRepeatedField(msg, 6, undefined)) == null ? undefined : f
   };
 
   if (includeInstance) {
@@ -828,7 +870,7 @@ proto.document.Document.deserializeBinaryFromReader = function(msg, reader) {
     case 3:
       var value = new proto.document.VerificationMethod;
       reader.readMessage(value,proto.document.VerificationMethod.deserializeBinaryFromReader);
-      msg.addVerificationmethods(value);
+      msg.addVerificationMethods(value);
       break;
     case 4:
       var value = new proto.document.Signature;
@@ -887,7 +929,7 @@ proto.document.Document.serializeBinaryToWriter = function(message, writer) {
       f
     );
   }
-  f = message.getVerificationmethodsList();
+  f = message.getVerificationMethods();
   if (f.length > 0) {
     writer.writeRepeatedMessage(
       3,
@@ -903,7 +945,7 @@ proto.document.Document.serializeBinaryToWriter = function(message, writer) {
       proto.document.Signature.serializeBinaryToWriter
     );
   }
-  f = message.getServicesList();
+  f = message.getServices();
   if (f.length > 0) {
     writer.writeRepeatedMessage(
       5,
@@ -911,7 +953,7 @@ proto.document.Document.serializeBinaryToWriter = function(message, writer) {
       proto.document.Service.serializeBinaryToWriter
     );
   }
-  f = message.getAuthenticationsList();
+  f = message.getAuthentications();
   if (f.length > 0) {
     writer.writeRepeatedString(
       6,
@@ -926,7 +968,7 @@ proto.document.Document.serializeBinaryToWriter = function(message, writer) {
  * @return {string}
  */
 proto.document.Document.prototype.getId = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, undefined));
 };
 
 
@@ -944,7 +986,7 @@ proto.document.Document.prototype.setId = function(value) {
  * @return {string}
  */
 proto.document.Document.prototype.getController = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, undefined));
 };
 
 
@@ -958,10 +1000,10 @@ proto.document.Document.prototype.setController = function(value) {
 
 
 /**
- * repeated VerificationMethod verificationMethods = 3;
+ * repeated VerificationMethod verification_methods = 3;
  * @return {!Array<!proto.document.VerificationMethod>}
  */
-proto.document.Document.prototype.getVerificationmethodsList = function() {
+proto.document.Document.prototype.getVerificationMethods = function() {
   return /** @type{!Array<!proto.document.VerificationMethod>} */ (
     jspb.Message.getRepeatedWrapperField(this, proto.document.VerificationMethod, 3));
 };
@@ -971,7 +1013,7 @@ proto.document.Document.prototype.getVerificationmethodsList = function() {
  * @param {!Array<!proto.document.VerificationMethod>} value
  * @return {!proto.document.Document} returns this
 */
-proto.document.Document.prototype.setVerificationmethodsList = function(value) {
+proto.document.Document.prototype.setVerificationMethods = function(value) {
   return jspb.Message.setRepeatedWrapperField(this, 3, value);
 };
 
@@ -981,7 +1023,7 @@ proto.document.Document.prototype.setVerificationmethodsList = function(value) {
  * @param {number=} opt_index
  * @return {!proto.document.VerificationMethod}
  */
-proto.document.Document.prototype.addVerificationmethods = function(opt_value, opt_index) {
+proto.document.Document.prototype.addVerificationMethods = function(opt_value, opt_index) {
   return jspb.Message.addToRepeatedWrapperField(this, 3, opt_value, proto.document.VerificationMethod, opt_index);
 };
 
@@ -990,8 +1032,8 @@ proto.document.Document.prototype.addVerificationmethods = function(opt_value, o
  * Clears the list making it empty but non-null.
  * @return {!proto.document.Document} returns this
  */
-proto.document.Document.prototype.clearVerificationmethodsList = function() {
-  return this.setVerificationmethodsList([]);
+proto.document.Document.prototype.clearVerificationMethods = function() {
+  return this.setVerificationMethods([]);
 };
 
 
@@ -1036,7 +1078,7 @@ proto.document.Document.prototype.hasSignature = function() {
  * repeated Service services = 5;
  * @return {!Array<!proto.document.Service>}
  */
-proto.document.Document.prototype.getServicesList = function() {
+proto.document.Document.prototype.getServices = function() {
   return /** @type{!Array<!proto.document.Service>} */ (
     jspb.Message.getRepeatedWrapperField(this, proto.document.Service, 5));
 };
@@ -1046,7 +1088,7 @@ proto.document.Document.prototype.getServicesList = function() {
  * @param {!Array<!proto.document.Service>} value
  * @return {!proto.document.Document} returns this
 */
-proto.document.Document.prototype.setServicesList = function(value) {
+proto.document.Document.prototype.setServices = function(value) {
   return jspb.Message.setRepeatedWrapperField(this, 5, value);
 };
 
@@ -1065,8 +1107,8 @@ proto.document.Document.prototype.addServices = function(opt_value, opt_index) {
  * Clears the list making it empty but non-null.
  * @return {!proto.document.Document} returns this
  */
-proto.document.Document.prototype.clearServicesList = function() {
-  return this.setServicesList([]);
+proto.document.Document.prototype.clearServices = function() {
+  return this.setServices([]);
 };
 
 
@@ -1074,8 +1116,8 @@ proto.document.Document.prototype.clearServicesList = function() {
  * repeated string authentications = 6;
  * @return {!Array<string>}
  */
-proto.document.Document.prototype.getAuthenticationsList = function() {
-  return /** @type {!Array<string>} */ (jspb.Message.getRepeatedField(this, 6));
+proto.document.Document.prototype.getAuthentications = function() {
+  return /** @type {!Array<string>} */ (jspb.Message.getRepeatedField(this, 6, undefined));
 };
 
 
@@ -1083,7 +1125,7 @@ proto.document.Document.prototype.getAuthenticationsList = function() {
  * @param {!Array<string>} value
  * @return {!proto.document.Document} returns this
  */
-proto.document.Document.prototype.setAuthenticationsList = function(value) {
+proto.document.Document.prototype.setAuthentications = function(value) {
   return jspb.Message.setField(this, 6, value || []);
 };
 
@@ -1102,8 +1144,8 @@ proto.document.Document.prototype.addAuthentications = function(value, opt_index
  * Clears the list making it empty but non-null.
  * @return {!proto.document.Document} returns this
  */
-proto.document.Document.prototype.clearAuthenticationsList = function() {
-  return this.setAuthenticationsList([]);
+proto.document.Document.prototype.clearAuthentications = function() {
+  return this.setAuthentications([]);
 };
 
 
