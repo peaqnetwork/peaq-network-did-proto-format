@@ -13,13 +13,13 @@ enum VerificationType {
 
 message VerificationMethod {
   string id = 1;
-  VerificationType type = 2;
+  string type = 2;
   string controller = 3;
   string public_key_multibase = 4;
 }
 
 message Signature {
-  VerificationType type = 1;
+  string type = 1;
   string issuer = 2;
   string hash = 3;
 }

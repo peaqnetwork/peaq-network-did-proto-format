@@ -187,7 +187,7 @@ proto.document.VerificationMethod.deserializeBinaryFromReader = function(msg, re
       msg.setId(value);
       break;
     case 2:
-      var value = /** @type {!proto.document.VerificationType} */ (reader.readEnum());
+      var value = /** @type {string} */ (reader.readString());
       msg.setType(value);
       break;
     case 3:
@@ -235,8 +235,8 @@ proto.document.VerificationMethod.serializeBinaryToWriter = function(message, wr
     );
   }
   f = message.getType();
-  if (f !== 0.0) {
-    writer.writeEnum(
+  if (f.length > 0) {
+    writer.writeString(
       2,
       f
     );
@@ -277,20 +277,20 @@ proto.document.VerificationMethod.prototype.setId = function(value) {
 
 
 /**
- * optional VerificationType type = 2;
- * @return {!proto.document.VerificationType}
+ * optional string type = 2;
+ * @return {string}
  */
 proto.document.VerificationMethod.prototype.getType = function() {
-  return /** @type {!proto.document.VerificationType} */ (jspb.Message.getFieldWithDefault(this, 2, undefined));
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, undefined));
 };
 
 
 /**
- * @param {!proto.document.VerificationType} value
+ * @param {string} value
  * @return {!proto.document.VerificationMethod} returns this
  */
 proto.document.VerificationMethod.prototype.setType = function(value) {
-  return jspb.Message.setProto3EnumField(this, 2, value);
+  return jspb.Message.setProto3StringField(this, 2, value);
 };
 
 
@@ -402,7 +402,7 @@ proto.document.Signature.deserializeBinaryFromReader = function(msg, reader) {
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = /** @type {!proto.document.VerificationType} */ (reader.readEnum());
+      var value = /** @type {string} */ (reader.readString());
       msg.setType(value);
       break;
     case 2:
@@ -443,8 +443,8 @@ proto.document.Signature.prototype.serializeBinary = function() {
 proto.document.Signature.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
   f = message.getType();
-  if (f !== 0.0) {
-    writer.writeEnum(
+  if (f.length > 0) {
+    writer.writeString(
       1,
       f
     );
@@ -467,20 +467,20 @@ proto.document.Signature.serializeBinaryToWriter = function(message, writer) {
 
 
 /**
- * optional VerificationType type = 1;
- * @return {!proto.document.VerificationType}
+ * optional string type = 1;
+ * @return {string}
  */
 proto.document.Signature.prototype.getType = function() {
-  return /** @type {!proto.document.VerificationType} */ (jspb.Message.getFieldWithDefault(this, 1, undefined));
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, undefined));
 };
 
 
 /**
- * @param {!proto.document.VerificationType} value
+ * @param {string} value
  * @return {!proto.document.Signature} returns this
  */
 proto.document.Signature.prototype.setType = function(value) {
-  return jspb.Message.setProto3EnumField(this, 1, value);
+  return jspb.Message.setProto3StringField(this, 1, value);
 };
 
 
